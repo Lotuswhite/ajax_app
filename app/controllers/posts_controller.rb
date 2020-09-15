@@ -1,12 +1,10 @@
 class PostsController < ApplicationController
   def index  # indexアクションを定義した
-    @posts = Post.all  #"これはコントローラーで定義したインスタンス変数を確認するための文字列です"
-  end
-
-  def new
+    @posts = Post.all.order(id: "DESC")  #"これはコントローラーで定義したインスタンス変数を確認するための文字列です"
   end
 
   def create
     Post.create(content:params[:content])
+    redirect_to action: :index
   end
 end
